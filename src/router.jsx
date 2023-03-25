@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet, Link } from "react-router-dom";
+import { createBrowserRouter, Outlet, Link, Navigate } from "react-router-dom";
 
 import AuthContextProvider from "./store/auth-context";
 import Login from "./routes/Login";
@@ -38,6 +38,7 @@ const AuthWrapper = () => {
 };
 
 const router = createBrowserRouter([
+  { path: "/", element: <Navigate to="/login" /> },
   {
     element: <ContextWrapper />,
     children: [
