@@ -10,6 +10,7 @@ import RelationFilter from "../components/HeroDisplay/RelationFilter";
 import Card from "../components/UI/Card";
 import Divider from "../components/UI/Divider";
 import Button from "../components/UI/Button";
+import Modal from "../components/UI/Modal";
 
 const DetailedHero = () => {
   const token = localStorage.getItem("token");
@@ -25,6 +26,11 @@ const DetailedHero = () => {
   const [isProfileEditingMode, setIsProfileEditingMode] = useState(false);
   const [isRelationsEditingMode, setIsRelationsEditingMode] = useState(false);
   const [role, setRole] = useState("support");
+  const [showModal, setShowModal] = useState(false);
+
+  const deleteButtonHandler = () => {
+    setShowModal(true);
+  };
 
   const deleteHeroHandler = () => {
     deleteHeroMutation.mutate({ id: param.id, token });
@@ -44,12 +50,20 @@ const DetailedHero = () => {
 
   return (
     <>
+      {showModal && (
+        <Modal
+          onCancel={() => setShowModal(false)}
+          onAction={deleteHeroHandler}
+        >
+          Are you sure you want to delete this hero?
+        </Modal>
+      )}
       {isLoading && <div>loading...</div>}
       {isError && <div>{error.message}</div>}
       {isSuccess && (
         <Card className="flex flex-col px-10 xl:pr-10 xl:flex-row justify-center items-center border-2 border-sand">
           <div className="py-5 xl:w-[35vw] flex flex-col items-center gap-5 ">
-            <Button className="py-1" onClick={deleteHeroHandler}>
+            <Button className="py-1" onClick={deleteButtonHandler}>
               Delete Hero
             </Button>
             {!isProfileEditingMode && (
