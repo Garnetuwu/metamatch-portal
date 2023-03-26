@@ -36,20 +36,20 @@ const HeroRelations = ({
 
   return (
     <form
-      className="grid grid-cols-8 p-3 w-full gap-3"
+      className="grid grid-cols-2 p-3 w-full gap-3"
       action="/"
       onSubmit={submitFormHandler}
     >
       <RelationSegment roleName={currentRole} relations={filteredRelations} />
-      <Divider className="col-span-8" />
-      <Button type="submit" className="col-span-4 w-3/4 place-self-center h-10">
+      <Divider className="col-span-full" />
+      <Button type="submit" className="col-span-1 place-self-center h-10">
         Submit
       </Button>
       <Button
         disabled={isLoading}
         type="button"
         onClick={cancelButtonHandler}
-        className="col-span-4 w-3/4 place-self-center h-10"
+        className="col-span-1 place-self-center h-10"
       >
         Cancel
       </Button>

@@ -6,11 +6,13 @@ const RelationSegment = ({ relations }) => {
       {relations.map((relation) => (
         <RelationCard
           score={relation.score}
+          combo={relation.combo}
           special={relation.special}
-          comment={relation.comment}
+          counterComment={relation.counterComment}
+          comboComment={relation.comboComment}
           name={relation.hero.name}
           key={relation._id}
-          className="col-span-2"
+          className="col-span-1"
         />
       ))}
     </ul>

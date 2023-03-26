@@ -16,8 +16,10 @@ const initialState = {
       },
       name: "",
       score: 0,
+      combo: 0,
       special: false,
-      comment: "",
+      counterComment: "",
+      comboComment: "",
     },
   ],
 };

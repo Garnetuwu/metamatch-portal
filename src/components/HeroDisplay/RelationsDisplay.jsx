@@ -13,8 +13,10 @@ const RelationsDisplay = ({ onEditRelations, currentRole }) => {
       id={relation.hero._id}
       name={relation.hero.name}
       score={relation.score}
+      combo={relation.combo}
       special={relation.special}
-      comment={relation.comment}
+      counterComment={relation.counterComment}
+      comboComment={relation.comboComment}
     />
   ));
   return (
