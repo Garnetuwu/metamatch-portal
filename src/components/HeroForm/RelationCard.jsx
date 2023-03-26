@@ -91,14 +91,15 @@ const RelationCard = ({
             />
           </div>
           <div className="flex flex-col gap-2">
-            <Label htmlFor={name + "Comment"} className="text-sm">
+            <Label htmlFor={name + "counterComment"} className="text-sm">
               Comment:
             </Label>
             <textarea
+              disabled={score < 70 && score > -70}
               onChange={counterCommentChangeHandler}
-              value={counterComment}
-              id={name + "counter comment"}
-              className="outline-none bg-slate-500/70 text-white p-2 rounded-md"
+              value={score < 70 && score > -70 ? "" : counterComment}
+              id={name + "counterComment"}
+              className="outline-none bg-slate-500/70 text-white p-2 rounded-md disabled:bg-metal"
             />
           </div>
         </div>
@@ -129,10 +130,11 @@ const RelationCard = ({
               Comment:
             </Label>
             <textarea
-              value={comboComment}
+              disabled={combo < 4}
+              value={combo < 4 ? "" : comboComment}
               onChange={comboCommentChangeHandler}
               id={name + "combo comment"}
-              className="outline-none bg-slate-500/70 text-white p-2 rounded-md"
+              className="outline-none bg-slate-500/70 text-white p-2 rounded-md disabled:bg-metal"
             />
           </div>
         </div>
