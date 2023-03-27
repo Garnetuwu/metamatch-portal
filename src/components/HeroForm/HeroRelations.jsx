@@ -29,6 +29,13 @@ const HeroRelations = ({
     let relationsData = [];
     touchedRelations.map((relation) => {
       const { touched, ...relationData } = relation;
+      if (relation.special) {
+        relationData.score = 0;
+      }
+      if (relation.score < 70 && relation.score > -70 && !relation.special) {
+        relationData.counterComment = "";
+      }
+
       relationsData.push(relationData);
     });
     onUpdateRelation(relationsData);

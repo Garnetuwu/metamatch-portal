@@ -95,9 +95,11 @@ const RelationCard = ({
               Comment:
             </Label>
             <textarea
-              disabled={score < 70 && score > -70}
+              disabled={score < 70 && score > -70 && !special}
               onChange={counterCommentChangeHandler}
-              value={score < 70 && score > -70 ? "" : counterComment}
+              value={
+                score < 70 && score > -70 && !special ? "" : counterComment
+              }
               id={name + "counterComment"}
               className="outline-none bg-slate-500/70 text-white p-2 rounded-md disabled:bg-metal"
             />
