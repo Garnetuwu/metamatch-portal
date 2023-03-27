@@ -1,16 +1,40 @@
 import Button from "./Button";
+import ReactDOM from "react-dom";
 
-const Modal = ({ children, className, onCancel, onAction }) => {
+const ModalOverlay = ({ children, title, hidden, onCancel, onAction }) => {
+  return (
+    <div className="fixed w-full h-full flex justify-center items-center p-10">
+      <div
+        className="bg-gray-700/50 fixed z-0 w-full h-full"
+        onClick={onCancel}
+      />
+      <div className="z-10 max-w-lg rounded-md grid grid-cols-2 bg-sand p-5 gap-3 text-onyx border-dirty-pink border-2">
+        <div className="col-span-full font-bold">{title}</div>
+        <div className="col-span-full">{children}</div>
+        <Button className={hidden ? "hidden" : ""} onClick={onAction}>
+          DELETE
+        </Button>
+        <Button className={hidden ? "col-span-full" : ""} onClick={onCancel}>
+          Cancel
+        </Button>
+      </div>
+    </div>
+  );
+};
+const Modal = ({ children, title, hidden, onCancel, onAction }) => {
   return (
     <>
-      <div className="absolute top-0 bottom-0 left-0 right-0 m-auto flex justify-center items-center">
-        <div className="z-10 rounded-md grid grid-cols-2 bg-sand p-5 gap-3 text-onyx border-dirty-pink border-2">
-          <div className="col-span-full font-bold">{children}</div>
-          <Button onClick={onAction}>DELETE</Button>
-          <Button onClick={onCancel}>Cancel</Button>
-        </div>
-        <div className="bg-gray-700/50 w-full h-full absolute z-0" />
-      </div>
+      {ReactDOM.createPortal(
+        <ModalOverlay
+          title={title}
+          hidden={hidden}
+          onAction={onAction}
+          onCancel={onCancel}
+        >
+          {children}
+        </ModalOverlay>,
+        document.querySelector("#overlay-root")
+      )}
     </>
   );
 };

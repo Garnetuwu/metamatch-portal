@@ -52,6 +52,7 @@ const DetailedHero = () => {
     <>
       {showModal && (
         <Modal
+          title="Warning"
           onCancel={() => setShowModal(false)}
           onAction={deleteHeroHandler}
         >
@@ -61,8 +62,8 @@ const DetailedHero = () => {
       {isLoading && <div>loading...</div>}
       {isError && <div>{error.message}</div>}
       {isSuccess && (
-        <Card className="flex flex-col px-10 xl:pr-10 xl:flex-row justify-center items-center border-2 border-sand">
-          <div className="py-5 xl:w-[35vw] flex flex-col items-center gap-5 ">
+        <Card className="flex flex-col px-10 w-[90vw] xl:w-[80vw] justify-center items-center border-2 border-sand">
+          <div className="py-5 flex flex-col items-center gap-5 ">
             <Button className="py-1" onClick={deleteButtonHandler}>
               Delete Hero
             </Button>
@@ -83,7 +84,7 @@ const DetailedHero = () => {
               />
             )}
           </div>
-          <div className="mt-5 xl:mt-0 xl:ml-5 w-[80vw] xl:w-[50vw]">
+          <div className="mt-5 flex flex-col w-full">
             <p className="text-md text-center font-semibold">Relations</p>
             <Divider className="mb-3 mt-1" />
             <RelationFilter

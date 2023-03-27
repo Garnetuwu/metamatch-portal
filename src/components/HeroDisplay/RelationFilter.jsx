@@ -4,7 +4,7 @@ import { roleList } from "../../utils/heroTraits";
 const RelationFilter = ({ currentRole, onFilter }) => {
   const content = roleList.map((role) => (
     <CustomRadio
-      className="w-1/2 text-white rounded-none place-self-center hover:bg-indigo"
+      className="text-white rounded-none place-self-center hover:bg-indigo"
       sort="role"
       value={role}
       key={role}
@@ -16,7 +16,7 @@ const RelationFilter = ({ currentRole, onFilter }) => {
   ));
 
   return (
-    <div className="col-span-full flex mb-5 border-2 border-sand rounded-md overflow-hidden">
+    <div className="flex mb-5 border-2 border-sand rounded-md overflow-hidden">
       {content}
     </div>
   );
