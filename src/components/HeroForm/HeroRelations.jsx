@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../UI/Button";
 import Divider from "../UI/Divider";
+import FlexDisplay from "../UI/FlexDisplay";
 import RelationSegment from "./RelationSegment";
 const HeroRelations = ({
   isError,
@@ -42,26 +43,24 @@ const HeroRelations = ({
   };
 
   return (
-    <form
-      className="grid grid-cols-2 p-3 w-full gap-3"
-      action="/"
-      onSubmit={submitFormHandler}
-    >
-      <RelationSegment roleName={currentRole} relations={filteredRelations} />
-      <Divider className="col-span-full" />
-      <Button type="submit" className="col-span-1 place-self-center h-10">
-        Submit
-      </Button>
-      <Button
-        disabled={isLoading}
-        type="button"
-        onClick={cancelButtonHandler}
-        className="col-span-1 place-self-center h-10"
-      >
-        Cancel
-      </Button>
-      {isError && <p className="text-dirty-pink font-semibold">{error}</p>}
-    </form>
+    <FlexDisplay>
+      <form className="contents" action="/" onSubmit={submitFormHandler}>
+        <RelationSegment roleName={currentRole} relations={filteredRelations} />
+        <Divider className="col-span-full" />
+        <Button type="submit" className="col-span-1 place-self-center h-10">
+          Submit
+        </Button>
+        <Button
+          disabled={isLoading}
+          type="button"
+          onClick={cancelButtonHandler}
+          className="col-span-1 place-self-center h-10"
+        >
+          Cancel
+        </Button>
+        {isError && <p className="text-dirty-pink font-semibold">{error}</p>}
+      </form>
+    </FlexDisplay>
   );
 };
 

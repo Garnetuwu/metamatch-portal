@@ -62,9 +62,7 @@ const RelationDisplayCard = ({
           </div>
           <div className="flex flex-col gap-2 items-center bg-metal border-sand rounded-md py-2">
             <p className=" text-sand underline">Combo</p>
-            {!special && (
-              <p className="font-semibold">combo: {transformCombo(combo)}</p>
-            )}
+            <p className="font-semibold">combo: {transformCombo(combo)}</p>
             <p className="whitespace-pre-wrap italic text-gray-300">
               {comboComment === "" && "no comment"}
               {comboComment}

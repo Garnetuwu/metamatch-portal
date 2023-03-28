@@ -5,6 +5,7 @@ const RelationSegment = ({ relations }) => {
     <ul className="contents">
       {relations.map((relation) => (
         <RelationCard
+          touched={relation.touched}
           score={relation.score}
           combo={relation.combo}
           special={relation.special}

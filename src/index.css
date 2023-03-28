@@ -29,4 +29,7 @@
   .radio-label {
     @apply w-full rounded-md flex justify-center items-center gap-2 p-2 text-onyx text-center cursor-pointer whitespace-nowrap;
   }
+  .comment {
+    @apply outline-none w-[25rem] h-[10rem] bg-indigo text-white p-2 rounded-md disabled:bg-metal
+  }
 }

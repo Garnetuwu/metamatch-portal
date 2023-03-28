@@ -8,14 +8,14 @@ const ModalOverlay = ({ children, title, hidden, onCancel, onAction }) => {
         className="bg-gray-700/50 fixed z-0 w-full h-full"
         onClick={onCancel}
       />
-      <div className="z-10 max-w-lg rounded-md grid grid-cols-2 bg-sand p-5 gap-3 text-onyx border-dirty-pink border-2">
+      <div className="z-10 max-w-lg rounded-md grid grid-cols-2 place-items-center bg-sand p-5 gap-3 text-onyx border-dirty-pink border-2">
         <div className="col-span-full font-bold">{title}</div>
         <div className="col-span-full">{children}</div>
         <Button className={hidden ? "hidden" : ""} onClick={onAction}>
           DELETE
         </Button>
         <Button className={hidden ? "col-span-full" : ""} onClick={onCancel}>
-          Cancel
+          Back
         </Button>
       </div>
     </div>
