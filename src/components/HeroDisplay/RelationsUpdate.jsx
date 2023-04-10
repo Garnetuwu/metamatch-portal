@@ -27,6 +27,7 @@ const RelationsUpdate = ({
 
   return (
     <HeroRelations
+      isSuccess={isSuccess}
       isLoading={isLoading}
       isError={isError}
       error={error}

@@ -4,6 +4,7 @@ import Divider from "../UI/Divider";
 import FlexDisplay from "../UI/FlexDisplay";
 import RelationSegment from "./RelationSegment";
 const HeroRelations = ({
+  isSuccess,
   isError,
   isLoading,
   error,
@@ -18,6 +19,8 @@ const HeroRelations = ({
   const filteredRelations = heroRelations.filter(
     (relation) => relation.hero.role === currentRole
   );
+
+  console.log(isLoading);
 
   const cancelButtonHandler = () => {
     dispatch({ type: "UPDATE", payload: { relationships: originalRelations } });
@@ -48,7 +51,8 @@ const HeroRelations = ({
         <RelationSegment roleName={currentRole} relations={filteredRelations} />
         <Divider className="col-span-full" />
         <Button type="submit" className="col-span-1 place-self-center h-10">
-          Submit
+          {!isLoading && "submit"}
+          {isLoading && "submitting..."}
         </Button>
         <Button
           disabled={isLoading}
@@ -58,6 +62,9 @@ const HeroRelations = ({
         >
           Cancel
         </Button>
+        {isSuccess && (
+          <p className="text-dirty-pink font-semibold">susccessful!</p>
+        )}
         {isError && <p className="text-dirty-pink font-semibold">{error}</p>}
       </form>
     </FlexDisplay>
