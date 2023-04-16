@@ -17,6 +17,7 @@ import capitalize from "../../utils/capitalize";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import transformGoogleImage from "../../utils/transformGoogleImage";
 
 const imageRegex =
   /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
@@ -88,10 +89,12 @@ const HeroBasicInfo = ({ onSubmit, isLoading, isError, error, title }) => {
     } else {
       setStrenghError(null);
     }
+
+    const imageURL = transformGoogleImage(image);
     //submit
     const hero = {
       name,
-      image,
+      image: imageURL,
       role,
       type,
       weakness,

@@ -11,7 +11,7 @@ const BasicInfoDisplay = ({ onEditProfile }) => {
     <div className="flex flex-col items-center gap-2">
       <img
         className="w-[100px] h-[100px] rounded-md shadow-md"
-        src={transformGoogleImage(heroData.image)}
+        src={heroData.image}
       />
       <p className="text-lg">{heroData.name}</p>
       <div>

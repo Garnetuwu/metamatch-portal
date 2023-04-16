@@ -7,10 +7,7 @@ const HeroItem = ({ image, name, id, onDeleteHero }) => {
   return (
     <HeroCard>
       <div>
-        <img
-          className="w-[100px] h-[100px]"
-          src={transformGoogleImage(image)}
-        />
+        <img className="w-[100px] h-[100px]" src={image} />
       </div>
       <div className="text-gray-300">{name}</div>
 
