@@ -13,6 +13,7 @@ const RelationsUpdate = ({
   const { isSuccess, isError, isLoading, error } = editHeroMutation;
 
   const updateRelationHandler = (data) => {
+    console.log(data);
     editHeroMutation.mutate({
       hero: { relationships: data, heroId },
       token,

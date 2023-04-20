@@ -44,7 +44,7 @@ const RelationCard = ({
   };
 
   const comboChangeHandler = (e) => {
-    dispatchChange({ combo: e.target.value });
+    dispatchChange({ combo: +e.target.value });
   };
 
   const comboCommentChangeHandler = (e) => {

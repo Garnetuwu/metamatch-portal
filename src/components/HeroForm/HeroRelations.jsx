@@ -20,8 +20,6 @@ const HeroRelations = ({
     (relation) => relation.hero.role === currentRole
   );
 
-  console.log(isLoading);
-
   const cancelButtonHandler = () => {
     dispatch({ type: "UPDATE", payload: { relationships: originalRelations } });
     onCancel();
