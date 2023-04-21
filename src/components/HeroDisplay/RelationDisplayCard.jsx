@@ -65,7 +65,15 @@ const RelationDisplayCard = ({
             <p className="font-semibold">combo: {transformCombo(combo)}</p>
             <p className="whitespace-pre-wrap italic text-gray-300">
               {comboComment === "" && "no comment"}
-              {comboComment}
+              {comboComment !== "" && (
+                <Button
+                  className="whitespace-nowrap leading-6"
+                  comment={comboComment}
+                  onClick={() => setShowComment(true)}
+                >
+                  view comment
+                </Button>
+              )}
             </p>
           </div>
         </div>
