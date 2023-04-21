@@ -22,17 +22,18 @@ const RelationDisplayCard = ({
   comboComment,
 }) => {
   const [showComment, setShowComment] = useState(false);
+  const [showAgainst, setShowAgainst] = useState("against");
   return (
     <>
       {showComment && (
         <Modal
           hidden="true"
-          title={`Against ${name}`}
+          title={showAgainst ? `against ${name}` : `combos with ${name}`}
           onCancel={() => {
             setShowComment(false);
           }}
         >
-          {counterComment}
+          {showAgainst ? counterComment : comboComment}
         </Modal>
       )}
       <div className="place-self-stretch flex flex-col p-2 rounded-lg  bg-indigo border-2 border-sand">
@@ -52,8 +53,10 @@ const RelationDisplayCard = ({
               {counterComment !== "" && (
                 <Button
                   className="whitespace-nowrap leading-6"
-                  comment={counterComment}
-                  onClick={() => setShowComment(true)}
+                  onClick={() => {
+                    setShowComment(true);
+                    setShowAgainst(true);
+                  }}
                 >
                   view comment
                 </Button>
@@ -68,8 +71,10 @@ const RelationDisplayCard = ({
               {comboComment !== "" && (
                 <Button
                   className="whitespace-nowrap leading-6"
-                  comment={comboComment}
-                  onClick={() => setShowComment(true)}
+                  onClick={() => {
+                    setShowComment(true);
+                    setShowAgainst(false);
+                  }}
                 >
                   view comment
                 </Button>
