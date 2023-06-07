@@ -5,7 +5,8 @@ import HeroesList from "../components/Heroes/HeroesList";
 import { useEffect } from "react";
 
 const Heroes = () => {
-  const { fetchHeroesData } = useHeroRequests();
+  const token = localStorage.getItem("token");
+  const { fetchHeroesData } = useHeroRequests(null, token);
   const { data, error, isSuccess, isLoading, isError, refetch } =
     fetchHeroesData;
   const location = useLocation();

@@ -22,7 +22,8 @@ export const editHero = async (hero, token) => {
   return res;
 };
 
-export const getHeroes = async () => {
+export const getHeroes = async (token) => {
+  axios.defaults.headers.common["Authorization"] = `BEARER ${token}`;
   const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/heroes`);
   return res.data;
 };

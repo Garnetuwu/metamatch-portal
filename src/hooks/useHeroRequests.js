@@ -38,7 +38,7 @@ const useHeroRequests = (heroId, token) => {
   });
 
   const fetchHeroesData = useQuery(["heroes"], {
-    queryFn: getHeroes,
+    queryFn: () => getHeroes(token),
     refetchOnWindowFocus: false,
     notifyOnChangeProps: ["data"],
     enabled: false,
