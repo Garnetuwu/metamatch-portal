@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet, Link, Navigate } from "react-router-dom";
 
 import AuthContextProvider from "./store/auth-context";
 import Login from "./routes/Login";
+import Register from "./routes/Register";
 import Verify from "./routes/Verify";
 import NewHero from "./routes/NewHero";
 import Heroes from "./routes/Heroes";
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
         element: <Verify />,
       },
       { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
       {
         element: <AuthWrapper />,
         children: [

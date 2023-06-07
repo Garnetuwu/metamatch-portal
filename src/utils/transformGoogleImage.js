@@ -1,5 +1,5 @@
 const transformGoogleImage = (url) => {
-  if (!url.includes("view?usp=share_link")) {
+  if (!url.includes("view?usp=")) {
     return url;
   }
   const id = url.split("/")[5];
