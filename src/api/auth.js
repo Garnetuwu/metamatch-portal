@@ -1,8 +1,10 @@
 import axios from "axios";
 
 export const loginUser = async (email) => {
-  console.log(email);
-  await axios.post(`${import.meta.env.VITE_SERVER_URL}/login`, { email });
+  const res = await axios.post(`${import.meta.env.VITE_SERVER_URL}/login`, {
+    email,
+  });
+  return res;
 };
 
 export const registerUser = async (email, username) => {

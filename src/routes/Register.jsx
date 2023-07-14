@@ -10,8 +10,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 
 const Register = () => {
-  const { loggedIn } = useAuth();
-  const { register } = useAuthRequests();
+  const { loggedIn, loginHandler } = useAuth();
+  const { register, login } = useAuthRequests();
   const { isSuccess, isError, error, isLoading } = register;
   const navigate = useNavigate();
   const emailRef = useRef();
@@ -29,7 +29,12 @@ const Register = () => {
     if (isSuccess) {
       navigate("/login", { state: { newUser: true } });
     }
-  }, [isSuccess, navigate]);
+    if (login.isSuccess && login.data) {
+      const data = login.data.data;
+      loginHandler(data);
+      navigate("/heroes");
+    }
+  }, [isSuccess, navigate, login, loginHandler]);
 
   return (
     <DisplayWrapper>
@@ -84,6 +89,12 @@ const Register = () => {
               onClick={() => navigate("/login")}
             >
               have account? log in here
+            </div>
+            <div
+              className="underline text-center hover:cursor-pointer text-sand"
+              onClick={() => login.mutate(import.meta.env.VITE_VISITOR_EMAIL)}
+            >
+              Visit as a guest
             </div>
             <div className="border-2 rounded-md p-3 mt-3">
               Note: through register you can only access my dummy database, in
